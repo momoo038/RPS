@@ -56,8 +56,26 @@ function playGame(){
         const userSelection = getUserChoice();
         console.log(`You chose: ${userSelection}, Computer chose: ${computerSelection}`);
         playRound(computerSelection, userSelection);
+
+        
+
+        if (humanScore === 3 || computerScore === 3) {
+            console.log("Game Over!");
+            if (humanScore === 3) {
+                console.log("You reached 3 points, so you win!");
+            } else {
+                console.log("Computer reached 3 points, so it wins!");
+            } break;
+        }
     }
     console.log(`Final Score: Human: ${humanScore}, Computer: ${computerScore}`);
+    if (humanScore > computerScore) {
+        console.log("Congratulations, you won the game!");
+    } else if (computerScore > humanScore){
+        console.log("Sorry, you lost the game!");
+    } else {
+        console.log("Game's a tie!");
+    }
 }
 // play game
 playGame();
