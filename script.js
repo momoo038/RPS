@@ -15,7 +15,17 @@ function getComputerChoice(){
 
 // get user input to make their own choice out of those 3 choices
 function getUserChoice(){
-    let userChoice = prompt("What do you choose? [rock-paper-scissors]")
+    let userChoice;
+    while (true){
+        userChoice = prompt("Enter your choice (rock, paper, or scissors):");
+        
+        userChoice = userChoice.toLowerCase();
+        if(userChoice === "rock" || userChoice === "paper" || userChoice === "scissors"){
+            break;
+        } else {
+            alert("Invalid choice. Please enter rock, paper, or scissors.");
+        }
+    }
     return userChoice;
 }
 // return the user choice
@@ -28,7 +38,6 @@ let computerScore = 0;
 // function that takes human and computer choices as arguments and plays round, increments round winner score and logs the winner
 function playRound(computerChoice, userChoice){
 // make user input case insensitive
-    userChoice = userChoice.toLowerCase();
 
 // uh.. make the game
     if(userChoice === computerChoice){
@@ -56,8 +65,6 @@ function playGame(){
         const userSelection = getUserChoice();
         console.log(`You chose: ${userSelection}, Computer chose: ${computerSelection}`);
         playRound(computerSelection, userSelection);
-
-        
 
         if (humanScore === 3 || computerScore === 3) {
             console.log("Game Over!");
