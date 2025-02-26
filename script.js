@@ -19,6 +19,11 @@ function getUserChoice(){
     while (true){
         userChoice = prompt("Enter your choice (rock, paper, or scissors):");
 
+        if (userChoice === null || userChoice === undefined){
+            alert("You cancelled the prompt, try again. You lose a point :)");
+            break;
+        }
+
         userChoice = userChoice.toLowerCase();
         if(userChoice === "rock" || userChoice === "paper" || userChoice === "scissors"){
             break;
@@ -81,12 +86,12 @@ function playGame(){
         }
     }
     console.log(`Final Score: Human: ${humanScore}, Computer: ${computerScore}`);
-    if (humanScore > computerScore) {
-        console.log("Congratulations, you won the game!");
-    } else if (computerScore > humanScore){
-        console.log("Sorry, you lost the game!");
-    } else {
-        console.log("Game's a tie!");
+        if (humanScore > computerScore) {
+            console.log("Congratulations, you won the game!");
+        } else if (computerScore > humanScore){
+            console.log("Sorry, you lost the game!");
+        } else {
+            console.log("Game's a tie!");
     }
         const playAgain = prompt("Wanna play again? [Y-N]")
         if(playAgain.toLowerCase()!== "y") {
