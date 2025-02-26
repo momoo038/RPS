@@ -18,7 +18,7 @@ function getUserChoice(){
     let userChoice;
     while (true){
         userChoice = prompt("Enter your choice (rock, paper, or scissors):");
-        
+
         userChoice = userChoice.toLowerCase();
         if(userChoice === "rock" || userChoice === "paper" || userChoice === "scissors"){
             break;
@@ -58,6 +58,11 @@ function playRound(computerChoice, userChoice){
 
 // full game
 function playGame(){
+    
+    while (true) {
+        humanScore = 0;
+        computerScore = 0;
+
 // for loop that plays as long as i (round number) is below 5 and logs user and computer scores
     for(let i = 0; i < 5; i++){
         console.log(`Round ${i + 1}`);
@@ -82,6 +87,12 @@ function playGame(){
         console.log("Sorry, you lost the game!");
     } else {
         console.log("Game's a tie!");
+    }
+        const playAgain = prompt("Wanna play again? [Y-N]")
+        if(playAgain.toLowerCase()!== "y") {
+            console.log("Thanks for playing!");
+            break;
+        }
     }
 }
 // play game
