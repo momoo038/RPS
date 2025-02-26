@@ -29,6 +29,7 @@ let computerScore = 0;
 function playRound(computerChoice, userChoice){
 // make user input case insensitive
     userChoice = userChoice.toLowerCase();
+
 // uh.. make the game
     if(userChoice === computerChoice){
         console.log("It's a tie!")
@@ -46,17 +47,14 @@ function playRound(computerChoice, userChoice){
 
 }
 
-// variable stores in the choices
-const userSelection = getUserChoice();
-const computerSelection = getComputerChoice();
-
 // full game
 function playGame(){
 // for loop that plays as long as i (round number) is below 5 and logs user and computer scores
     for(let i = 0; i < 5; i++){
         console.log(`Round ${i + 1}`);
-        const userSelection = getUserChoice();
         const computerSelection = getComputerChoice();
+        const userSelection = getUserChoice();
+        console.log(`You chose: ${userSelection}, Computer chose: ${computerSelection}`);
         playRound(computerSelection, userSelection);
     }
     console.log(`Final Score: Human: ${humanScore}, Computer: ${computerScore}`);
