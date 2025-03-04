@@ -89,47 +89,6 @@ function playRound(computerChoice, userChoice){
 
     resultDiv.appendChild(result);
 }
-
-// full game
-// function playGame(){
-    
-//     while (true) {
-//         humanScore = 0;
-//         computerScore = 0;
-
-// // for loop that plays as long as i (round number) is below 5 and logs user and computer scores
-//     // for(let i = 0; i < 5; i++){
-//     //     console.log(`Round ${i + 1}`);
-//     //     console.log(`You chose: ${userSelection}, Computer chose: ${computerSelection}`);
-//     //     playRound(computerSelection, userSelection);
-
-//     //     if (humanScore === 5 || computerScore === 5) {
-//     //         console.log("Game Over!");
-//     //         if (humanScore === 5) {
-//     //             console.log("You reached 5 points, so you win!");
-//     //         } else {
-//     //             console.log("Computer reached 5 points, so it wins!");
-//     //         } 
-//     //     }
-//     // }
-
-//     console.log(`Final Score: Human: ${humanScore}, Computer: ${computerScore}`);
-//         if (humanScore > computerScore) {
-//             console.log("Congratulations, you won the game!");
-//         } else if (computerScore > humanScore){
-//             console.log("Sorry, you lost the game!");
-//         } else {
-//             console.log("Game's a tie!");
-//     }
-//         const playAgain = prompt("Wanna play again? [Y-N]")
-//         if(playAgain.toLowerCase()!== "y") {
-//             console.log("Thanks for playing!");
-//             break;
-//         }
-//     }
-// }
-// play game
-
         btnRock.addEventListener("click", () => {
             let userChoice = "rock"
             let computerChoice = getComputerChoice();
