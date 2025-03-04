@@ -62,43 +62,65 @@ function playRound(computerChoice, userChoice){
 }
 
 // full game
-function playGame(){
+// function playGame(){
     
-    while (true) {
-        humanScore = 0;
-        computerScore = 0;
+//     while (true) {
+//         humanScore = 0;
+//         computerScore = 0;
 
-// for loop that plays as long as i (round number) is below 5 and logs user and computer scores
-    for(let i = 0; i < 5; i++){
-        console.log(`Round ${i + 1}`);
-        const computerSelection = getComputerChoice();
-        const userSelection = getUserChoice();
-        console.log(`You chose: ${userSelection}, Computer chose: ${computerSelection}`);
-        playRound(computerSelection, userSelection);
+// // for loop that plays as long as i (round number) is below 5 and logs user and computer scores
+//     // for(let i = 0; i < 5; i++){
+//     //     console.log(`Round ${i + 1}`);
+//     //     console.log(`You chose: ${userSelection}, Computer chose: ${computerSelection}`);
+//     //     playRound(computerSelection, userSelection);
 
-        if (humanScore === 3 || computerScore === 3) {
-            console.log("Game Over!");
-            if (humanScore === 3) {
-                console.log("You reached 3 points, so you win!");
-            } else {
-                console.log("Computer reached 3 points, so it wins!");
-            } break;
-        }
-    }
-    console.log(`Final Score: Human: ${humanScore}, Computer: ${computerScore}`);
-        if (humanScore > computerScore) {
-            console.log("Congratulations, you won the game!");
-        } else if (computerScore > humanScore){
-            console.log("Sorry, you lost the game!");
-        } else {
-            console.log("Game's a tie!");
-    }
-        const playAgain = prompt("Wanna play again? [Y-N]")
-        if(playAgain.toLowerCase()!== "y") {
-            console.log("Thanks for playing!");
-            break;
-        }
-    }
-}
+//     //     if (humanScore === 3 || computerScore === 3) {
+//     //         console.log("Game Over!");
+//     //         if (humanScore === 3) {
+//     //             console.log("You reached 3 points, so you win!");
+//     //         } else {
+//     //             console.log("Computer reached 3 points, so it wins!");
+//     //         } break;
+//     //     }
+//     // }
+
+//     console.log(`Final Score: Human: ${humanScore}, Computer: ${computerScore}`);
+//         if (humanScore > computerScore) {
+//             console.log("Congratulations, you won the game!");
+//         } else if (computerScore > humanScore){
+//             console.log("Sorry, you lost the game!");
+//         } else {
+//             console.log("Game's a tie!");
+//     }
+//         const playAgain = prompt("Wanna play again? [Y-N]")
+//         if(playAgain.toLowerCase()!== "y") {
+//             console.log("Thanks for playing!");
+//             break;
+//         }
+//     }
+// }
 // play game
-playGame();
+        const rps_ui = document.querySelector("#rps-ui");
+        const btnRock = document.querySelector("#btn_rock");
+        const btnPaper = document.querySelector("#btn_paper");
+        const btnScissors = document.querySelector("#btn_scissors");
+        const rpsResult = document.querySelector("#rpsResult")
+
+        btnRock.addEventListener("click", () => {
+            let userChoice = "rock"
+            let computerChoice = getComputerChoice();
+            playRound(computerChoice, "rock");
+            console.log(`You chose: ${userChoice}, Computer chose: ${computerChoice}`)
+        });
+        btnPaper.addEventListener("click", () => {
+            let userChoice = "paper"
+            let computerChoice = getComputerChoice();
+            playRound(computerChoice, "paper")
+            console.log(`You chose: ${userChoice}, Computer chose: ${computerChoice}`)
+        });
+        btnScissors.addEventListener("click", () => {
+            let userChoice = "scissors"
+            let computerChoice = getComputerChoice();
+            playRound(computerChoice, "scissors")
+            console.log(`You chose: ${userChoice}, Computer chose: ${computerChoice}`)
+        });
