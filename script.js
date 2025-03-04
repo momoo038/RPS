@@ -40,25 +40,54 @@ let humanScore = 0;
 // create variable to store computer score
 let computerScore = 0;
 
+const rps_ui = document.querySelector("#rps-ui");
+const btnRock = document.querySelector("#btn_rock");
+const btnPaper = document.querySelector("#btn_paper");
+const btnScissors = document.querySelector("#btn_scissors");
+
+const resultDiv = document.createElement("div")
+rps_ui.appendChild(resultDiv);
+
 // function that takes human and computer choices as arguments and plays round, increments round winner score and logs the winner
 function playRound(computerChoice, userChoice){
-// make user input case insensitive
 
 // uh.. make the game
+
+    resultDiv.innerHTML = "";  
+    const result = document.createElement("p")
+
     if(userChoice === computerChoice){
-        console.log("It's a tie!")
+        resultDiv.innerHTML = "";  
+        result.textContent = `You: ${userChoice} PC: ${computerChoice} | It's a tie! Scores: ${humanScore} - ${computerScore}`;
     } else if (
         (userChoice === "rock" && computerChoice === "scissors") ||
         (userChoice === "paper" && computerChoice === "rock") ||
         (userChoice === "scissors" && computerChoice === "paper")
     ) {
-        console.log("You win!")
+        resultDiv.innerHTML = "";  
         humanScore++;
+        result.textContent = `You: ${userChoice} PC: ${computerChoice} | You won! Scores: ${humanScore} - ${computerScore}`;
     } else {
-        console.log("Computer wins!")
+        resultDiv.innerHTML = "";  
         computerScore++;
+        result.textContent = `You: ${userChoice} PC: ${computerChoice} | You lost! Scores: ${humanScore} - ${computerScore}`;
     }
 
+    if (humanScore === 5 || computerScore === 5) {
+        if (humanScore === 5) {
+            resultDiv.innerHTML = "";
+            result.textContent = `You reached 5 points, so you win!`;
+            humanScore = 0;
+            computerScore = 0;
+        } else {
+            resultDiv.innerHTML = "";
+            result.textContent = `Computer reached 5 points, so it wins!`;
+            humanScore = 0;
+            computerScore = 0;
+        } 
+    }
+
+    resultDiv.appendChild(result);
 }
 
 // full game
@@ -74,13 +103,13 @@ function playRound(computerChoice, userChoice){
 //     //     console.log(`You chose: ${userSelection}, Computer chose: ${computerSelection}`);
 //     //     playRound(computerSelection, userSelection);
 
-//     //     if (humanScore === 3 || computerScore === 3) {
+//     //     if (humanScore === 5 || computerScore === 5) {
 //     //         console.log("Game Over!");
-//     //         if (humanScore === 3) {
-//     //             console.log("You reached 3 points, so you win!");
+//     //         if (humanScore === 5) {
+//     //             console.log("You reached 5 points, so you win!");
 //     //         } else {
-//     //             console.log("Computer reached 3 points, so it wins!");
-//     //         } break;
+//     //             console.log("Computer reached 5 points, so it wins!");
+//     //         } 
 //     //     }
 //     // }
 
@@ -100,27 +129,21 @@ function playRound(computerChoice, userChoice){
 //     }
 // }
 // play game
-        const rps_ui = document.querySelector("#rps-ui");
-        const btnRock = document.querySelector("#btn_rock");
-        const btnPaper = document.querySelector("#btn_paper");
-        const btnScissors = document.querySelector("#btn_scissors");
-        const rpsResult = document.querySelector("#rpsResult")
 
         btnRock.addEventListener("click", () => {
             let userChoice = "rock"
             let computerChoice = getComputerChoice();
             playRound(computerChoice, "rock");
-            console.log(`You chose: ${userChoice}, Computer chose: ${computerChoice}`)
         });
         btnPaper.addEventListener("click", () => {
             let userChoice = "paper"
             let computerChoice = getComputerChoice();
             playRound(computerChoice, "paper")
-            console.log(`You chose: ${userChoice}, Computer chose: ${computerChoice}`)
         });
         btnScissors.addEventListener("click", () => {
             let userChoice = "scissors"
             let computerChoice = getComputerChoice();
             playRound(computerChoice, "scissors")
-            console.log(`You chose: ${userChoice}, Computer chose: ${computerChoice}`)
         });
+
+       
